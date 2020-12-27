@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.10) (preloaded format=pdflatex 2020.10.14)  27 DEC 2020 17:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.10) (preloaded format=pdflatex 2020.10.14)  27 DEC 2020 17:33
 entering extended mode
-**./worksheet6solutions.tex
-(worksheet6solutions.tex
+**./JakeBowhayCoursework.tex
+(JakeBowhayCoursework.tex
 LaTeX2e <2020-10-01> patch level 1
 L3 programming layer <2020-10-05> xparse <2020-03-03>
 (C:\Users\jbbow\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
@@ -279,8 +279,8 @@ Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
 )
 (C:\Users\jbbow\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
-)) (worksheet6solutions.aux)
-\openout1 = `worksheet6solutions.aux'.
+)) (JakeBowhayCoursework.aux)
+\openout1 = `JakeBowhayCoursework.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
 LaTeX Font Info:    ... okay on input line 14.
@@ -476,33 +476,33 @@ File: images/Q2b.pdf Graphic file (type pdf)
 Package pdftex.def Info: images/Q2b.pdf  used on input line 191.
 (pdftex.def)             Requested size: 401.80959pt x 251.13483pt.
  [7] [8 <./images/Q2b.pdf>]
-(worksheet6solutions.aux) ) 
+(JakeBowhayCoursework.aux) ) 
 Here is how much of TeX's memory you used:
  7955 strings out of 480236
- 145799 string characters out of 2880557
- 822632 words of memory out of 3000000
+ 145720 string characters out of 2880557
+ 822634 words of memory out of 3000000
  24372 multiletter control sequences out of 15000+200000
  546398 words of font info for 72 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 64i,13n,69p,356b,1882s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\Users\jbbow\AppData\Local\MiKTeX\fonts/pk/ljfou
-r/jknappen/ec/dpi600\tctt0800.pk><C:/Users/jbbow/AppData/Local/Programs/MiKTeX/
-fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/jbbow/AppData/Local/Program
-s/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/jbbow/AppData/Loca
-l/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/jbbow/App
-Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/
-jbbow/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C
-:/Users/jbbow/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi
-b10.pfb><C:/Users/jbbow/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
-ts/cm/cmr10.pfb><C:/Users/jbbow/AppData/Local/Programs/MiKTeX/fonts/type1/publi
-c/amsfonts/cm/cmr12.pfb><C:/Users/jbbow/AppData/Local/Programs/MiKTeX/fonts/typ
-e1/public/amsfonts/cm/cmr8.pfb><C:/Users/jbbow/AppData/Local/Programs/MiKTeX/fo
-nts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/jbbow/AppData/Local/Programs/Mi
-KTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/jbbow/AppData/Local/Pr
-ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/jbbow/AppData
-/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb><C:/Users/jbbo
-w/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on worksheet6solutions.pdf (8 pages, 370277 bytes).
+ 64i,13n,69p,357b,1882s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\jbbow\AppData\Local\MiKTeX\fonts/pk/ljfo
+ur/jknappen/ec/dpi600\tctt0800.pk><C:/Users/jbbow/AppData/Local/Programs/MiKTeX
+/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/jbbow/AppData/Local/Progra
+ms/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/jbbow/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/jbbow/Ap
+pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users
+/jbbow/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><
+C:/Users/jbbow/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmm
+ib10.pfb><C:/Users/jbbow/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
+nts/cm/cmr10.pfb><C:/Users/jbbow/AppData/Local/Programs/MiKTeX/fonts/type1/publ
+ic/amsfonts/cm/cmr12.pfb><C:/Users/jbbow/AppData/Local/Programs/MiKTeX/fonts/ty
+pe1/public/amsfonts/cm/cmr8.pfb><C:/Users/jbbow/AppData/Local/Programs/MiKTeX/f
+onts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/jbbow/AppData/Local/Programs/M
+iKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/jbbow/AppData/Local/P
+rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/jbbow/AppDat
+a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb><C:/Users/jbb
+ow/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
+Output written on JakeBowhayCoursework.pdf (8 pages, 370277 bytes).
 PDF statistics:
  380 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
