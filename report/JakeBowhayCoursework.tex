@@ -11,6 +11,10 @@
 \renewcommand{\vec}[1]{\boldsymbol{#1}}
 \newcommand{\order}{\mathcal{O}}
 
+\newenvironment{listcomment}[1][1]{\framed\adjustwidth{-\dimexpr 
+#1\leftmargin + \fontdimen2\font}{}}{\endadjustwidth\endframed}
+
+
 \begin{document}
 
 \solutionsheader{COURSEWORK ASSESSMENT}{Jake Bowhay (UP19056)}
@@ -36,34 +40,48 @@ as it automatically resizes the paper to the correct size.
 		\item Rearranging $x^{4} = e^{-x} \cos(x)$ gives $f(x) = x^{4} - 
 		e^{-x} \cos(x)$.
 		\lstinputlisting{../src/q1/Q1a_i.m}
-		\begin{center}
+		\NoIndent{
 			\includegraphics[scale=0.5]{images/Q1a_i.pdf}
 			\includegraphics[scale=0.5]{images/Q1a_i_zoomed.pdf}
-		\end{center}
+		}
 			The second zoomed in plot shows there are two zeros in the given 
 			domain. The first zero can be bracketed by $[-1.5,-1]$ as 
 			$f(-1.5)=4.7455$ and $f(-1)=-0.4687$ so since the function is 
 			continuous and there is a change of sign this bracket must 
 			contain 
 			a zero. Like wise the second root can be bracketed by $[0.5,1]$ 
-			as $f(0.5)=-0.4698$ and $f(1)=0.8012$.
+			as $f(0.5)=-0.4698$ and $f(1)=0.8012$. So the original equation 
+			has two solutions.
+			
+			
 		\item Setting $f(x) = \frac{x^{3}}{\sin(x)} - 1$.
-		\lstinputlisting{../src/q1/Q1a_ii.m}
-		\begin{center}
+			\lstinputlisting{../src/q1/Q1a_ii.m}
+		\NoIndent{
 			\includegraphics[scale=0.5]{images/Q1a_ii.pdf}
 			\includegraphics[scale=0.5]{images/Q1a_ii_zoomed.pdf}
-		\end{center}
+		}
 		The first root can be bracketed by $[-1,-0.5]$ as $f(-1) = 0.1884$ 
 		and 
 		$f(-0.5)=-0.7393$ and $f(x)$ is continuous in this bracket. Likewise, 
 		the second root can be bracketed by $[0.5,1]$ as $f(0.5)=-0.7393$ and 
-		$f(1)=0.1884$.
+		$f(1)=0.1884$. So the original equation has two solutions.
+		
+		
 		\item Rearranging $\cot(x) = \frac{25}{25x-1}$ gives $f(x) = \cot(x) 
 		- \frac{25}{25x-1}$.
 		\lstinputlisting{../src/q1/Q1a_iii.m}
-			\begin{center}
+		\begin{center}
 			\includegraphics[scale=0.5]{images/Q1a_iii.pdf}
 		\end{center}
+	
+	
+		\item Rearrnaging $4e^{-x^{2}/5} = cos(5x) + 2$ gives $f(x) = 
+		4e^{-x^{2}/5} - cos(5x) - 2$.
+		\lstinputlisting{../src/q1/Q1a_iv.m}
+		\NoIndent{
+		\includegraphics[scale=0.5]{images/Q1a_iv.pdf}
+		\includegraphics[scale=0.5]{images/Q1a_iv_zoomed.pdf}
+		}		
 	\end{enumerate}
 \end{enumerate}
 
