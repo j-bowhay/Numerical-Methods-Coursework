@@ -20,7 +20,21 @@ as it automatically resizes the paper to the correct size.
 \lstinputlisting{../src/saveFigPDF.m}
 
 \section{Root-finding}
-
+\begin{enumerate}
+	\item To find how many solutions each equation has in the given domain I 
+	will rearrange all the equations to be equal to zero and then looks for 
+	the zeros of the rearranged equations. As a corollary to the intermediate 
+	value theorem, if a function is continuous and changes sign in a bracket 
+	then that bracket must contain a zero. So I will plot each of the 
+	rearranged equation and I look for appropriate brackets. I will use the 
+	\verb*|pltFunc| function to plot the functions as it removes values 
+	outside a defined limit which prevents MATLAB plotting discontinuous 
+	functions as continuous.
+	\lstinputlisting{../src/q1/pltFunc.m}
+	\begin{enumerate}
+		\item test
+	\end{enumerate}
+\end{enumerate}
 
 
 \end{document}
