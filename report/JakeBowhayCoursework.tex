@@ -29,10 +29,24 @@ as it automatically resizes the paper to the correct size.
 	rearranged equation and I look for appropriate brackets. I will use the 
 	\verb*|pltFunc| function to plot the functions as it removes values 
 	outside a defined limit which prevents MATLAB plotting discontinuous 
-	functions as continuous.
+	functions as continuous. The limits can then be changed using the 
+	property explorer to give a more useful plot.
 	\lstinputlisting{../src/q1/pltFunc.m}
 	\begin{enumerate}
-		\item test
+		\item Rearranging $x^{4} = e^{-x} \cos(x)$ gives $f(x) = x^{4} - 
+		e^{-x} \cos(x)$.
+		\lstinputlisting{../src/q1/a_i.m}
+		\begin{center}
+			\includegraphics[scale=0.5]{images/Q1a_i.pdf}
+			\includegraphics[scale=0.5]{images/Q1a_i_zoomed.pdf}
+		\end{center}
+			The second zoomed in plot shows there are two zeros in the given 
+			domain. The first zero can be bracketed by $[-1.5,-1]$ as 
+			$f(-1.5)=4.7455$ and $f(-1)=-0.4687$ so since the function is 
+			continuous and there is a change of sign this bracket must 
+			contain 
+			a root. Like wise the second root can be bracketed by $[0.5,1]$ 
+			as $f(0.5)=-0.4698$ and $f(1)=0.8012$.
 	\end{enumerate}
 \end{enumerate}
 

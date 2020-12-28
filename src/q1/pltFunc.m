@@ -1,11 +1,12 @@
-function pltFunc(f, xLim, discontLim)
+function pltFunc(f, xLimits, discontLim)
     %pltFunc plots function f between values of xLim removing any values
     % that are greater than discontLim to prevent MATLAB plotting
-    % discontinuous functions as continous
+    % discontinuous functions as continous and plots a line of x = 0 to
+    % help make any zeros clear
     %
     % Input:
     %   f = function handle to plot
-    %   xLim = domain of function to plot
+    %   xLimits = domain of function to plot
     %   discountLim = absolute values of the function greater than this are
     %   changed to NaN. Setting to inf will plot all values of the function
     %
@@ -15,20 +16,21 @@ function pltFunc(f, xLim, discontLim)
     
     
     % Check xLim is the correct dimensions
-    assert(isequal(size(xLim), [1 2]), "xLim must be a 1x2 array")
+    assert(isequal(size(xLimits), [1 2]), "xLim must be a 1x2 array")
     
     %% Generate values to plot
-    x = linspace(xLim(1), xLim(2));
+    x = linspace(xLimits(1), xLimits(2));
     y = f(x);
     
     % Remove large values of y to prevent MATLAB plotting discontinuous
     % functions as continuous
     y(abs(y)>discontLim) = NaN;
     
-    %% Plot function
-    plot(x, y);
+    %% Plot function and line x = 0
+    plot(x, y, [min(x) max(x)], [0 0], "g-", "LineWidth", 2);
     xlabel("x");
     ylabel("f(x)");
+    xlim(xLimits);
     title("Plot of f(x)");
     grid on;
 end
