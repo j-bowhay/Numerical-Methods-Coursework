@@ -1,4 +1,4 @@
-function [sol, i, err] = bisectRootvec(f, a, b, tol)
+function [sol, i, err] = bisectRoot(f, a, b, tol)
     %bisectRoot Use the bisection method to find roots of the function f
     %   bracketed within the intervals [a, b].
     %
@@ -25,7 +25,7 @@ function [sol, i, err] = bisectRootvec(f, a, b, tol)
     
     % intialise variables
     % iteration counter
-    i = 0;
+    i = zeros(size(a));
     % current solution estimate
     sol = (a + b)/2;
     % previous solution estimate
@@ -38,7 +38,7 @@ function [sol, i, err] = bisectRootvec(f, a, b, tol)
     % at each iteration, find the half-interval that contains a sign change
     % and relabel the endpoints appropriately
     while any(~withinTol)
-        i = i + 1;
+        i(~withinTol) = i(~withinTol) + 1;
         sol_old = sol;
         mid = (a + b)/2;
         
@@ -57,9 +57,9 @@ function [sol, i, err] = bisectRootvec(f, a, b, tol)
         a(secondHalf) = mid(secondHalf);
         
         % update solutions and errors values that aren't within tolerance
-        sol(~withinTol) = (a + b)/2;
-        err(~withinTol) = abs(sol - sol_old);
+        sol(~withinTol) = (a(~withinTol) + b(~withinTol))/2;
+        err(~withinTol) = abs(sol(~withinTol) - sol_old(~withinTol));
         withinTol(err < tol) = true;
-    end   
+    end
 end
 

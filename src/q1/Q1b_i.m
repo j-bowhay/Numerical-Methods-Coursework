@@ -1,7 +1,4 @@
 f = @(x) x.^4 - exp(-x).*cos(x);
-tic
-bisectRoot(f, -1.5, -1, 5e-9)
-toc
-tic
-[x,y,z]=bisectRootvec(f, -1.5, -1, 5e-9)
-toc
+a = [-1.5 0.5];
+b = [-1 1];
+[r, i, err] = bisectRoot(f, a, b, [5e-8 5e-9])

@@ -1,4 +1,4 @@
-function [sol,err] = bisectRoot(f, a, b, tol)
+function [sol,err] = bisectRootold(f, a, b, tol)
     %bisectRoot Use the bisection method to find a root of the function f
     %   bracketed within the interval [a, b].
     %
