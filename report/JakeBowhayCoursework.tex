@@ -86,6 +86,7 @@ as it automatically resizes the paper to the correct size.
 		$f(4)=0.6112$ and $f(5)=-0.4974$. $f(x)$ is continuous in each of the 
 		bracketing intervals.
 	
+	
 		\item Rearranging $4e^{-x^{2}/5} = cos(5x) + 2$ gives $f(x) = 
 		4e^{-x^{2}/5} - cos(5x) - 2$.
 		\lstinputlisting{../src/q1/Q1a_iv.m}
@@ -158,7 +159,23 @@ as it automatically resizes the paper to the correct size.
 				$[4,5]$     & 4.4914096   & 24           
 			\end{tabular}
 		\end{table}
-		\item
+		
+		
+		\item Solutions to $f(x) = 4e^{-x^{2}/5} - cos(5x) - 2 = 0 \  \ 
+		x\in[-2\pi,2\pi]$.
+		\lstinputlisting{../src/q1/Q1b_iv.m}
+		\begin{table}[!h]
+			\centering
+			\begin{tabular}{l|ll}
+				$[a,b]$        & Root       & \# Iterations \\ \hline
+				$[-2.5,-2]$    & -2.1222382 & 23            \\
+				$[-1.5,-1.25]$ & -1.4255432 & 22            \\
+				$[-1.25,-1]$   & -1.2145933 & 22            \\
+				$[1,1.25]$     & 1.2145933  & 22            \\
+				$[1.25,1.5]$   & 1.4255432  & 22            \\
+				$[2,2.5]$      & 2.1222382  & 23           
+			\end{tabular}
+		\end{table}
 	\end{enumerate}
 \end{enumerate}
 
