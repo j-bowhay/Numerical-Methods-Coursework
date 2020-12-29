@@ -108,13 +108,21 @@ as it automatically resizes the paper to the correct size.
 			\end{tabular}
 		\end{table}
 	\end{enumerate}
+
+
+
 	\item The bisection method used by calling the the \verb*|bisectRoot| 
 	function.
 	\lstinputlisting{../src/q1/bisectRoot.m}
+	
+	
 	\begin{enumerate}
 		\item Solutions to $f(x) = x^{4} - e^{-x} \cos(x) = 0 \  \ 
 		x\in[-2\pi,2\pi]$.
 		\lstinputlisting{../src/q1/Q1b_i.m}
+		Note the two different tolerances since one root is an order of 
+		magnitude larger so requires one less decimal place of accuracy to be 
+		accurate to 8 significant figures.
 		\begin{table}[!h]
 			\centering
 			\begin{tabular}{l|ll}
@@ -123,6 +131,22 @@ as it automatically resizes the paper to the correct size.
 				$[0.5,1]$   & 0.76221106 & 26          
 			\end{tabular}
 		\end{table}
+	
+	
+		\item Solutions to $f(x) = \frac{x^{3}}{\sin(x)} - 1 = 0 \  \ 
+		x\in[-2\pi,2\pi]$.
+		\lstinputlisting{../src/q1/Q1b_ii.m}
+		\begin{table}[!h]
+			\centering
+			\begin{tabular}{l|ll}
+				$[a,b]$     & Root        & \# Iterations \\ \hline
+				$[-1,-0.5]$ & -0.92862631 & 26            \\
+				$[0.5,1]$   & 0.92862631  & 26           
+			\end{tabular}
+		\end{table}
+	
+	
+		\item
 	\end{enumerate}
 \end{enumerate}
 
