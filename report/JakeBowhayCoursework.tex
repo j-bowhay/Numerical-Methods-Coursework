@@ -177,6 +177,26 @@ as it automatically resizes the paper to the correct size.
 			\end{tabular}
 		\end{table}
 	\end{enumerate}
+
+
+	\item The iterative scheme we asked to implement is called Steffensen's 
+	method. This is implemented in the \verb*|steffensenRoot| function.
+	\lstinputlisting{../src/q1/steffensenRoot.m}
+	The following uses this function to find the root of $e^{-x} - x = 0$ and 
+	calculate the convergence.
+	\lstinputlisting{../src/q1/Q1c.m}
+	After 5 iterations the root $x = 0.567143290410$ is accurate to 12 
+	decimal places.
+	\begin{center}
+		\includegraphics[scale=0.6]{images/Q1c.pdf}
+	\end{center}
+	The graph shows a straight which shows error $\propto \Delta_{n-1}^{q}$, 
+	where q is th e gradient of the line. Using the \verb*|MATLAB| function 
+	\verb*|polyfit| the gradient of the 
+	above graph as 1.8 which is close to 2 so Steffensen's method is second 
+	order.
+	
+	\item test
 \end{enumerate}
 
 

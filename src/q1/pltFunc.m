@@ -17,7 +17,7 @@ function pltFunc(f, domain, discontLim)
     
     
     % Check xLim is the correct dimensions
-    assert(isequal(size(domain), [1 2]), "xLim must be a 1x2 vector")
+    assert(isequal(size(domain), [1 2]), "domain must be a 1x2 vector")
     
     %% Generate values to plot
     x = linspace(domain(1), domain(2));

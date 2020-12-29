@@ -11,13 +11,20 @@ function [sol, i, err] = bisectRoot(f, a, b, tol)
     %   tol = absolute error tolerance with which to find the root;
     %   Iteration terminates when the root is known to within +/- tol
     %
+    %Outputs:
+    %   sol = 1*n array of of roots
+    %   i = 1*n array of the number of iterations required to find the nth
+    %   root
+    %   err = 
+    %
     %Usage:
-    %   [r, i, err] = bisect(f,a,b,tol) -> returns the approximation to a root
-    %   within [a, b], the number of iterations require to find the root
-    %   and the final absolute error
+    %   [r, i, err] = bisect(@(x) x.^2 - 4, 1, 3, 5e-9) -> returns the  
+    %   approximation to root of x^2 - 4 = 0 within [1, 3], the number of  
+    %   iterations required to find the root and the final absolute error
     
     % check if all intervals are correctly defined
-    assert(isequal(size(a), size(b)), "");
+    assert(isequal(size(a), size(b)),...
+        "Must be an equal number of upper and lower bounds");
     
     % check whether f changes sign
     assert(all(sign(f(a)) ~= sign(f(b))),...
