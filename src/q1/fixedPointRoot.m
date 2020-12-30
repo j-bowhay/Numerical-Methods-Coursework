@@ -42,7 +42,7 @@ function xn = fixedPointRoot(g, x0, tol, nMax)
     
     % print final summary
     if err > tol
-        error('No convergence after %d steps',n)
+        fprintf('No convergence after %d steps\n',n);
     else
         fprintf('\nConvergence after %d steps to a root at %-20.14g\n',...
             n, xn(end));
