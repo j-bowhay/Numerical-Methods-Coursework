@@ -38,7 +38,7 @@ function [r, n, err] = steffensenRoot(f, x0, tol, nMax)
     end
     
     % remove any unused preallocated element in error array
-    err(err == inf) = [];
+    err(isinf(err)) = [];
     
     % check if solution converged
     assert(err(end) < tol, "No convergence")

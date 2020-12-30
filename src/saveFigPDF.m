@@ -1,9 +1,9 @@
 function saveFigPDF(fileName)
-    % saveFigPDF saves open figure as a PDF file
+    %saveFigPDF saves open figure as a PDF file
     %
-    % Inputs:
+    %Inputs:
     %   fileName = File name to save figure as
-    % Usage:
+    %Usage:
     %   saveFigPDF("polynomial") -> Saves current figure as polynomial.pdf
     
     % Get current figure handle
