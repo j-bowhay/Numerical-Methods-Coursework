@@ -1,6 +1,17 @@
 function cobwebDiagram(g, x0, nMax, a, b)
-    %UNTITLED14 Summary of this function goes here
-    %   Detailed explanation goes here
+    %cobwebDiagram Creates cobweb diagram for x = g(x) in interval [a,b]
+    %
+    %Inputs:
+    %   g = function handle for g(x)
+    %   x0 = initial guess to start iteration
+    %   nMax = number of iterations to complete
+    %   a = lower end of interval [a,b] to plot cobweb diagram over
+    %   b = upper end of interval [a,b] to plot cobweb diagram over
+    %
+    %Usage:
+    %   cobwebDiagram(@(x) (x.^5 + 3)/5, 1, 10, 0, 1.5) -> produces a
+    %   cobweb diagram of x = (x^5 + 3)/5 based on an initial guess of 10
+    %   and 10 iterations. This is shown over the interval [0,1.5].
     
     %% get fixed point iteration sequence
     xn = fixedPointRoot(g, x0, nMax);

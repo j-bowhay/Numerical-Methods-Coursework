@@ -33,7 +33,6 @@ function xn = fixedPointRoot(g, x0, nMax)
     % remove any unused elements of the preallocated array
     xn(isnan(xn)) = [];
     
-    fprintf('\nAfter %d steps root is %-20.14g\n',...
-            n, xn(end));
+    fprintf('\nAfter %d steps root is %-20.14g\n', n, xn(end));
     fprintf('Final absolute error is %g\n\n', err);
 end
