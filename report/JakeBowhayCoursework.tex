@@ -191,7 +191,7 @@ as it automatically resizes the paper to the correct size.
 		\includegraphics[scale=0.6]{images/Q1c.pdf}
 	\end{center}
 	The graph shows a straight which shows error $\propto \Delta_{n-1}^{q}$, 
-	where q is th e gradient of the line. Using the \verb*|MATLAB| function 
+	where q is the gradient of the line. Using the \verb*|MATLAB| function 
 	\verb*|polyfit| the gradient of the 
 	above graph as 1.8 which is close to 2 so Steffensen's method is second 
 	order.
@@ -201,6 +201,19 @@ as it automatically resizes the paper to the correct size.
 	point iteration scheme.
 	\lstinputlisting{../src/q1/fixedPointRoot.m}
 	\lstinputlisting{../src/q1/cobwebDiagram.m}
+\end{enumerate}
+
+\section{Numerical integration and differentiation}
+\begin{enumerate}
+	\item \begin{enumerate}
+		\item The first expression is Simpson's 3/8 rule and the second is 
+		Milne's rule.
+		
+		Simpson's 3/8 rule can be implemented as follows.
+		\lstinputlisting{../src/q2/simpson38.m}
+		And similarly Milne's rule can be implemented.
+		\lstinputlisting{../src/q2/milne.m}
+	\end{enumerate}
 \end{enumerate}
 
 
