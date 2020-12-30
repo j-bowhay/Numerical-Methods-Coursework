@@ -1,18 +1,16 @@
-function cobwebDiagram(g, x0, tol, nMax)
+function cobwebDiagram(g, x0, nMax, a, b)
     %UNTITLED14 Summary of this function goes here
     %   Detailed explanation goes here
     
     %% get fixed point iteration sequence
-    xn = fixedPointRoot(g, x0, tol, nMax);
+    xn = fixedPointRoot(g, x0, nMax);
     
     %% generate cobweb diagram
-    % find the interval in which the sequence xn lies in
-    a = 0.9 * min(xn);
-    b = 1.1 * max(xn);
     
     % get values for the line y = x and y = g(x)
     x = linspace(a, b);
     y = g(x);
+    y(isinf(y)) = NaN;
     
     % set up figure
     hold on;
@@ -32,7 +30,7 @@ function cobwebDiagram(g, x0, tol, nMax)
     % plot the steps
     plot([xn(1) xn(1)], [0 xn(2)],'m-');
     for i=1:length(xn) - 2
-        plot([xn(i) xn(i + 1)], [xn(i + 1) xn(i + 1)],'m--');
+        plot([xn(i) xn(i + 1)], [xn(i + 1) xn(i + 1)],'m-');
         plot([xn(i + 1) xn(i + 1)], [xn(i + 1) xn(i + 2)],'m-');
     end
 end
