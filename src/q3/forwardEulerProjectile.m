@@ -1,6 +1,24 @@
 function [t, y] = forwardEulerProjectile(rhs, tSpan, y0, g, mu, n)
-    %UNTITLED26 Summary of this function goes here
-    %   Detailed explanation goes here
+    %forwardEulerProjectile solves the projectiles motion using forward
+    %euler
+    %   
+    %Inputs:
+    %   rhs = function handle for rhs of ode returning a column vector
+    %   [x,y,u,v]
+    %   tSpan = vector [a,b] which is the time interval to solve ODE over
+    %   y0 = 1*4 vector of initial conditions [x0,y0,u0,v0]
+    %   g = value of the acceleration due to gravity
+    %   mu = value of the drag parameter
+    %   n = the number of steps to split integration over
+    %
+    %Outputs:
+    %   t = column vector of solution times
+    %   y = matrix of solutions where each row is the values of each of the
+    %   varibles at the corisponding value of t
+    %Usage:
+    %   [t,y]=forwardEulerProjectile(@rhs_projectile, [0 5],...
+    %   [0 0 31 21]', 9.81, 2.79e-2, 100) -> Solves the projectile ODE from
+    %   t=1 to 5 with 100 steps
     
     t = linspace(tSpan(1), tSpan(end), n + 1);
     y = zeros(numel(t), numel(y0));
