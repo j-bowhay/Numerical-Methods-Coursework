@@ -1,4 +1,4 @@
-function quad = milne(f, a, b)
+function milneQuad = milne(f, a, b)
     %milne approximates integral of f(x) over interval [a,b] by using
     %Milne's rule
     %
@@ -8,12 +8,12 @@ function quad = milne(f, a, b)
     %   b = upper bound of the interval
     %
     %Outputs:
-    %   quad = approximate quadrature
+    %   milneQuad = approximate quadrature
     %
     %Usage:
     %   quad = milne(@(x) x^2, 0, 0.5) -> returns the approximate
     %   intergal of x^2 in the interval [0, 0.5]
     
-    quad = (b - a)/3 .* (2*f((2*a + b)/4) - f((a + b)/2)...
+    milneQuad = (b - a)/3 .* (2*f((3*a + b)/4) - f((a + b)/2)...
         + 2*f((a + 3*b)/4));
 end

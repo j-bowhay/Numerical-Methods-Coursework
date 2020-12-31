@@ -213,6 +213,21 @@ as it automatically resizes the paper to the correct size.
 		\lstinputlisting{../src/q2/simpson38.m}
 		And similarly Milne's rule can be implemented.
 		\lstinputlisting{../src/q2/milne.m}
+		However to use the composite version the integral must be broken down 
+		into smaller intervals. For example breaking the integral into $n$ 
+		intervals gives $\int_{a}^{b}f(x)dx = \int_{a}^{x_{1}}f(x)dx + 
+		\int_{x_{1}}^{x_{2}}f(x)dx + \cdots + \int_{x_{n-1}}^{b}f(x)dx$ 
+		where 
+		$x_{i} = a + i \cdot \frac{b - a}{n}$. Then each of these smaller 
+		integrals can be calculated using either of the methods. The 
+		\verb*|compositeQuad| function breaks down the integral into smaller 
+		intervals before using a Newton-Coutes method of choice to 
+		approximate the integral.
+		\lstinputlisting{../src/q2/compositeQuad.m}
+		For an example both methods can be used to evaluate $\int_{0}^{5} 
+		e^{x} - x dx$ to 6 decimal places as follows.
+		\lstinputlisting{../src/q2/Q2ai_example.m}
+		Both give the answer to the example as $134.913159$.
 	\end{enumerate}
 \end{enumerate}
 
