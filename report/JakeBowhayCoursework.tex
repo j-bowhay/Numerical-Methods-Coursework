@@ -189,7 +189,7 @@ as it automatically resizes the paper to the correct size.
 
 	\item The iterative scheme we asked to implement is called Steffensen's 
 	method. This is implemented in the \verb*|steffensenRoot| function.
-	\lstinputlisting{../src/q1/steffensenRoot.m}
+	\lstinputlisting[label=lst:steph]{../src/q1/steffensenRoot.m}
 	The following uses this function to find the root of $e^{-x} - x = 0$ and 
 	calculate the convergence.
 	\lstinputlisting{../src/q1/Q1c.m}
@@ -294,8 +294,19 @@ as it automatically resizes the paper to the correct size.
 	\end{center}
 	This shows the problem can be reduced to a root finding problem. This can 
 	be done using the bisection method already implemented in 
-	\autoref{lst:bisect}. First a function that returns just the landing 
-	position given a $\theta_{0}$.
+	\autoref{lst:bisect} or Stephen's method implemented in 
+	\autoref{lst:steph}. The two values of $\theta_{0}$ can be bracketed by 
+	the 
+	intervals $[20,25]$ and $[50,55]$. First a function, $x(\theta_{0})$, 
+	that 
+	returns just the 
+	landing 
+	position given a $\theta_{0}$ needs to be created.
+	\lstinputlisting{../src/q3/landingPosition.m}
+	Then using the bisection method the roots of $x(\theta_{0}) = 0$ can be 
+	found.
+	\lstinputlisting{../src/q3/Q3f_theta_solution.m}
+	This gives $\theta_{0} = 21.9185709$ or $\theta_{0} = 51.567361$.
 \end{enumerate}
 
 \newpage

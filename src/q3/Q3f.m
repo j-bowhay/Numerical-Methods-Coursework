@@ -3,8 +3,6 @@ tSpan = [0 5];
 v0 = 38;
 g = 9.81;
 mu = 2.79e-2;
-h = 0.5;
-n = (tSpan(end) - tSpan(1))/h;
 
 %% solve ODE for a range of theta
 %set event detection
