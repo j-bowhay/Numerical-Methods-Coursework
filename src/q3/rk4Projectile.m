@@ -16,7 +16,7 @@ function [t, y] = rk4Projectile(rhs, tSpan, y0, g, mu, n)
     %   varibles at the corisponding value of t in the same fashion as
     %   ode45
     %Usage:
-    %   [t,y]=rk4Projectile(@rhs_projectile, [0 5],...
+    %   [t,y]=rk4Projectile(@rhsProjectile, [0 5],...
     %   [0 0 31 21]', 9.81, 2.79e-2, 100) -> Solves the projectile ODE from
     %   t=1 to 5 with 100 steps
     
