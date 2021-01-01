@@ -14,10 +14,18 @@
 \newenvironment{listcomment}[1][1]{\framed\adjustwidth{-\dimexpr 
 #1\leftmargin + \fontdimen2\font}{}}{\endadjustwidth\endframed}
 
+\usepackage[toc,title]{appendix}
+\usepackage{caption}
+
+\usepackage{hyperref}
 
 \begin{document}
 
 \solutionsheader{COURSEWORK ASSESSMENT}{Jake Bowhay (UP19056)}
+
+\tableofcontents
+
+\hfill \break
 
 All figures in this report have been saved using \verb*|saveFigPDF| function 
 as it automatically resizes the paper to the correct size.
@@ -114,7 +122,7 @@ as it automatically resizes the paper to the correct size.
 
 	\item The bisection method is used by calling the the \verb*|bisectRoot| 
 	function.
-	\lstinputlisting{../src/q1/bisectRoot.m}
+	\lstinputlisting[label=lst:bisect]{../src/q1/bisectRoot.m}
 	
 	
 	\begin{enumerate}
@@ -230,7 +238,15 @@ as it automatically resizes the paper to the correct size.
 		Both give the answer to the example as $134.913159$.
 		
 		
-		\item test
+		\item Find order and accuracy
+	\end{enumerate}
+
+	
+	\item \begin{enumerate}
+		\item absolute error vs h
+		
+		
+		\item algebraic expression for absolute error
 	\end{enumerate}
 \end{enumerate}
 
@@ -258,8 +274,36 @@ as it automatically resizes the paper to the correct size.
 	\item Error question
 	
 	
-	\item Time at which particle crosses x axis
+	\item To find when the projectile crosses the x-axis first an event 
+	function is created.
+	\lstinputlisting{../src/q3/xaxisEvent.m}
+	Then solve the ODE with the added event function.
+	\lstinputlisting{../src/q3/Q3e.m}
+	This gives that the projectile first passes through the x-axis when 
+	$t=3.038777368718$
 	
-	\item Angle to make 40m
+	\item An equivalent formulation to this problem is to consider the angles 
+	$\theta_{0}$ required so that when a particle is fired from $(-40,0)$ it 
+	lands through the origin $(0,0)$. This can be visualized by plotting the 
+	landing $x$ coordinate against $\theta_{0}$ as shown in 
+	\autoref{fg:landing}.
+	\begin{center}
+		\includegraphics[scale=0.7]{images/Q3f.pdf}
+		\captionof{figure}{Generated using \autoref{lst:q3f}}
+		\label{fg:landing}
+	\end{center}
+	This shows the problem can be reduced to a root finding problem. This can 
+	be done using the bisection method already implemented in 
+	\autoref{lst:bisect}. First a function that returns just the landing 
+	position given a $\theta_{0}$.
 \end{enumerate}
+
+\newpage
+\begin{appendices}
+	\section{Additional Code for Question 1}
+	\section{Additional Code for Question 2}
+	\section{Additional Code for Question 3}
+	\lstinputlisting[label=lst:q3f]{../src/q3/Q3f.m}
+\end{appendices}
+
 \end{document}
