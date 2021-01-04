@@ -349,8 +349,14 @@ as it automatically resizes the paper to the correct size.
 	\end{center}
 
 	
-	\item Error question
-	
+	\item Error compared to \verb*|ode45|.
+	\begin{center}
+		\includegraphics[scale=0.7]{images/Q3d.pdf}
+		\captionof{figure}{Generated using \autoref{lst:q3d}}
+	\end{center}
+	The order of global truncation error can be given by the gradient in the 
+	limit as $h \xrightarrow{} 0$. In this case the gradient is 1 so the 
+	global truncation error is $\order(h)$.
 	
 	\item To find when the projectile crosses the x-axis first an event 
 	function is created.
@@ -359,6 +365,7 @@ as it automatically resizes the paper to the correct size.
 	\lstinputlisting{../src/q3/Q3e.m}
 	This gives that the projectile first passes through the x-axis when 
 	$t=3.038777368718$
+	
 	
 	\item An equivalent formulation to this problem is to consider the angles 
 	$\theta_{0}$ required so that when a particle is fired from $(-40,0)$ it 
@@ -395,6 +402,7 @@ as it automatically resizes the paper to the correct size.
 	\lstinputlisting[label=lst:q2bii]{../src/q2/Q2bii.m}
 	\section{Additional Code for Question 3}
 	\lstinputlisting[label=lst:q3c]{../src/q3/q3c.m}
+	\lstinputlisting[label=lst:q3d]{../src/q3/q3d.m}
 	\lstinputlisting[label=lst:q3f]{../src/q3/Q3f.m}
 \end{appendices}
 

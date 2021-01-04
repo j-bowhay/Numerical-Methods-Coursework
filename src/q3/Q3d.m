@@ -4,7 +4,7 @@ v0 = 38;
 theta0 = deg2rad(35);
 g = 9.81;
 mu = 2.79e-2;
-n = floor(logspace(1,5,250));
+n = floor(logspace(1,6));
 h = nan(size(n));
 err = nan(size(n));
 
@@ -13,7 +13,8 @@ y0 = [0 0 v0*cos(theta0) v0*sin(theta0)]';
 
 %% solve ODE
 %ode45
-sol = ode45(@(t, y) rhsProjectile(t, y, g, mu), tSpan, y0);
+options = odeset("RelTol",1e-6,"AbsTol",1e-9);
+sol = ode45(@(t, y) rhsProjectile(t, y, g, mu), tSpan, y0, options);
 
 for i = 1:length(n)
     %forward euler
@@ -21,9 +22,13 @@ for i = 1:length(n)
     yExact = deval(sol, t)';
     
     h(i) = (t(end) - t(1))/n(i);
-    err(i) = sum(vecnorm(yFE - yExact, 2, 2))/t(end);
+    diff = vecnorm(yFE - yExact, 2, 2);
+    err(i) = trapz(t,diff)/t(end);
 end
 
-loglog(h, err)
+loglog(h, err,"b-","LineWidth",2)
+ylabel("Absolute Error")
+xlabel("h")
+title("Affect of h on absolute error")
 grid on
 polyfit(log(h), log(err),1)
