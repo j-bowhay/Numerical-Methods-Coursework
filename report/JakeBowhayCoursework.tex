@@ -201,14 +201,51 @@ as it automatically resizes the paper to the correct size.
 	The graph shows a straight which shows error $\propto \Delta_{n-1}^{q}$, 
 	where q is the gradient of the line. Using the \verb*|MATLAB| function 
 	\verb*|polyfit| the gradient of the 
-	above graph as 1.8 which is close to 2 so Steffensen's method is second 
+	above graph as 1.8 which is approximately 2 so Steffensen's method is 
+	second 
 	order.
 	
 	
 	\item The first step in creating a cobweb plot is to implement a fixed 
 	point iteration scheme.
 	\lstinputlisting{../src/q1/fixedPointRoot.m}
+	Then the \verb*|cobwebDiagram| function can display the results of the 
+	fixed point iteration.
 	\lstinputlisting{../src/q1/cobwebDiagram.m}
+	The function requires user inputs of the iteration function $g(x)$, 
+	the initial guess $x_{0}$, the number of iterations and the interval to 
+	display on the x-axis (which should contain the root). The reason to user 
+	has to enter the range to display on the x-axis is because in the case of 
+	divergence the estimate of the root can shoot off to very large value 
+	which when plotted make previous iteration so small that the plot doesn't 
+	show anything meaningful.
+	
+	The first test I did was to ensure it could produce a cobweb diagram. For 
+	this I set $g(x) = \frac{3 - x^{3}}{4}$ with an initial guess of 
+	$\frac{1}{2}$.
+	\lstinputlisting{../src/q1/Q1d_cobweb_example.m}
+	\begin{center}
+		\includegraphics[scale=0.6]{images/Q1d_cobweb.pdf}
+	\end{center}
+
+	Next I tested producing a staircase diagram, so I set $g(x) = 
+	\sqrt[5]{5x-3}$ with an initial guess of 1.
+	\lstinputlisting{../src/q1/Q1d_staircase_example.m}
+	\begin{center}
+		\includegraphics[scale=0.6]{images/Q1d_staircase.pdf}
+	\end{center}
+	Since the function should also be able to handle iterations that don't 
+	converge, I tried $g(x)=\frac{1-xe^{x}}{x}$ with an initial guess of 
+	$\frac{1}{2}$.
+	\lstinputlisting{../src/q1/Q1d_divergance_example.m}
+	\begin{center}
+		\includegraphics[scale=0.6]{images/Q1d_divergance.pdf}
+	\end{center}
+	This cobweb diagram shows how the gradient at the root is too steep which 
+	means the iteration fails to converge. This is also shown by that fact 
+	that the approximate absolute error at the final step is still $\sim4.6$. 
+	I also tested it with a number of other function both converge and 
+	diverge however these have been omited from the report to save space.
 \end{enumerate}
 
 \section{Numerical integration and differentiation}
@@ -278,7 +315,9 @@ as it automatically resizes the paper to the correct size.
 		both exact integrate cubics but not quartics.
 		
 		Whilst both methods are fourth order Simpson's 3/8 rule has a lower 
-		error term so is slightly better as it is more accurate.
+		error term so is slightly better as it is more accurate. This is 
+		shown in \autopageref{fg:interr} as the absolute error for Simpson's 
+		3/8 rule is always less.
 	\end{enumerate}
 
 	
@@ -431,7 +470,9 @@ as it automatically resizes the paper to the correct size.
 	Then using the bisection method the roots of $x(\theta_{0}) = 0$ can be 
 	found.
 	\lstinputlisting{../src/q3/Q3f_theta_solution.m}
-	This gives $\theta_{0} = 21.9185709$ or $\theta_{0} = 51.567361$.
+	This gives $\theta_{0} = 21.9185709$ or $\theta_{0} = 51.567361$ as 
+	solutions to the initial angle so that the projectile crosses the x-axis 
+	40m away.
 \end{enumerate}
 
 \newpage

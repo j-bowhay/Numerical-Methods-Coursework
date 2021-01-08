@@ -1,4 +1,4 @@
-function cobwebDiagram(g, x0, nMax, a, b)
+function cobwebDiagram(g, x0, n, a, b)
     %cobwebDiagram Creates cobweb diagram for x = g(x) in interval [a,b]
     %
     %Inputs:
@@ -14,7 +14,7 @@ function cobwebDiagram(g, x0, nMax, a, b)
     %   and 10 iterations. This is shown over the interval [0,1.5].
     
     %% get fixed point iteration sequence
-    xn = fixedPointRoot(g, x0, nMax);
+    xn = fixedPointRoot(g, x0, n);
     
     %% generate cobweb diagram
     
@@ -22,6 +22,7 @@ function cobwebDiagram(g, x0, nMax, a, b)
     x = linspace(a, b);
     y = g(x);
     y(isinf(y)) = NaN;
+    y(y ~= real(y)) = NaN;
     
     % set up figure
     hold on;
