@@ -37,8 +37,12 @@ function [compQuad, h, err] = compositeQuad(f, i, a, b, tol)
     while all(err > tol) && n < nMax
         % generate step size
         h(n) = (b - a)/N;
+        % calculate lower bounds
+        lowerBounds = a + h(n).*[0:N-1];
+        % calculate upper bounds
+        upperBounds = a + h(n).*[1:N];
         % calculate quadrature using given Newton-coutes method
-        compQuad(n) = sum(i(f, a + h(n).*[0:N-1], a + h(n).*[1:N]));
+        compQuad(n) = sum(i(f, lowerBounds, upperBounds));
         % calculate absolute error
         try
             err(n) = abs(compQuad(n) - compQuad(n - 1));
