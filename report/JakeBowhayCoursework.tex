@@ -50,7 +50,7 @@ as it automatically resizes the paper to the correct size.
 	\begin{enumerate}
 		\item Rearranging $x^{4} = e^{-x} \cos(x)$ gives $f(x) = x^{4} - 
 		e^{-x} \cos(x)$.
-		\lstinputlisting{../src/q1/Q1a_i.m}
+		\lstinputlisting{../src/q1/Q1a_i_funcPlt.m}
 		\NoIndent{
 			\includegraphics[scale=0.5]{images/Q1a_i.pdf}
 			\includegraphics[scale=0.5]{images/Q1a_i_zoomed.pdf}
@@ -68,7 +68,7 @@ as it automatically resizes the paper to the correct size.
 			
 			
 		\item Setting $f(x) = \frac{x^{3}}{\sin(x)} - 1$.
-			\lstinputlisting{../src/q1/Q1a_ii.m}
+			\lstinputlisting{../src/q1/Q1a_ii_funcPlt.m}
 		\NoIndent{
 			\includegraphics[scale=0.5]{images/Q1a_ii.pdf}
 			\includegraphics[scale=0.5]{images/Q1a_ii_zoomed.pdf}
@@ -84,7 +84,7 @@ as it automatically resizes the paper to the correct size.
 		
 		\item Rearranging $\cot(x) = \frac{25}{25x-1}$ gives $f(x) = \cot(x) 
 		- \frac{25}{25x-1}$.
-		\lstinputlisting{../src/q1/Q1a_iii.m}
+		\lstinputlisting{../src/q1/Q1a_iii_funcPlt.m}
 		\begin{center}
 			\includegraphics[scale=0.5]{images/Q1a_iii.pdf}
 		\end{center}
@@ -101,7 +101,7 @@ as it automatically resizes the paper to the correct size.
 	
 		\item Rearranging $4e^{-x^{2}/5} = cos(5x) + 2$ gives $f(x) = 
 		4e^{-x^{2}/5} - cos(5x) - 2$.
-		\lstinputlisting{../src/q1/Q1a_iv.m}
+		\lstinputlisting{../src/q1/Q1a_iv_funcPlt.m}
 		\NoIndent{
 		\includegraphics[scale=0.5]{images/Q1a_iv.pdf}
 		\includegraphics[scale=0.5]{images/Q1a_iv_zoomed.pdf}
@@ -131,9 +131,10 @@ as it automatically resizes the paper to the correct size.
 	\begin{enumerate}
 		\item Solutions to $f(x) = x^{4} - e^{-x} \cos(x) = 0 \  \ 
 		x\in[-2\pi,2\pi]$.
-		\lstinputlisting{../src/q1/Q1b_i.m}
+		\lstinputlisting{../src/q1/Q1b_i_funcRoots.m}
 		Note the two different tolerances since one root is an order of 
-		magnitude larger so requires one less decimal place of accuracy to be 
+		magnitude larger so requires one less decimal place of tolerance to 
+		be 
 		accurate to 8 significant figures.
 		\begin{center}
 			\begin{tabular}{l|ll}
@@ -147,7 +148,7 @@ as it automatically resizes the paper to the correct size.
 	
 		\item Solutions to $f(x) = \frac{x^{3}}{\sin(x)} - 1 = 0 \  \ 
 		x\in[-2\pi,2\pi]$.
-		\lstinputlisting{../src/q1/Q1b_ii.m}
+		\lstinputlisting{../src/q1/Q1b_ii_funcRoots.m}
 		\begin{center}
 			\begin{tabular}{l|ll}
 				$[a,b]$     & Root        & \# Iterations \\ \hline
@@ -159,7 +160,7 @@ as it automatically resizes the paper to the correct size.
 	
 		\item Solutions to $f(x) = \cot(x)	- \frac{25}{25x-1} = 0 \  \ 
 		x\in[-2\pi,2\pi]$.
-		\lstinputlisting{../src/q1/Q1b_iii.m}
+		\lstinputlisting{../src/q1/Q1b_iii_funcRoots.m}
 		\begin{center}
 			\begin{tabular}{l|ll}
 				$[a,b]$     & Root        & \# Iterations \\ \hline
@@ -172,7 +173,7 @@ as it automatically resizes the paper to the correct size.
 		
 		\item Solutions to $f(x) = 4e^{-x^{2}/5} - cos(5x) - 2 = 0 \  \ 
 		x\in[-2\pi,2\pi]$.
-		\lstinputlisting{../src/q1/Q1b_iv.m}
+		\lstinputlisting{../src/q1/Q1b_iv_funcRoots.m}
 		\begin{center}
 			\begin{tabular}{l|ll}
 				$[a,b]$        & Root       & \# Iterations \\ \hline
@@ -192,7 +193,7 @@ as it automatically resizes the paper to the correct size.
 	\lstinputlisting[label=lst:steph]{../src/q1/steffensenRoot.m}
 	The following uses this function to find the root of $e^{-x} - x = 0$ and 
 	calculate the convergence.
-	\lstinputlisting{../src/q1/Q1c.m}
+	\lstinputlisting{../src/q1/Q1c_errorConvergance.m}
 	After 5 iterations the root $x = 0.567143290410$ is accurate to 12 
 	decimal places.
 	\begin{center}
@@ -271,7 +272,7 @@ as it automatically resizes the paper to the correct size.
 		\lstinputlisting{../src/q2/compositeQuad.m}
 		For an example both methods can be used to evaluate $\int_{0}^{5} 
 		e^{x} - x dx$ to 6 decimal places as follows.
-		\lstinputlisting{../src/q2/Q2ai_example.m}
+		\lstinputlisting{../src/q2/Q2ai_exampleIntegration.m}
 		Both give the answer to the example as $134.913159$.
 		
 		
@@ -424,7 +425,8 @@ as it automatically resizes the paper to the correct size.
 	following trajectories.
 	\begin{center}
 		\includegraphics[scale=0.7]{images/Q3c.pdf}
-		\captionof{figure}{Plot produced using \autoref{lst:q3c}}
+		\captionof{figure}{Comparision of the three different solutions. Plot 
+		produced using \autoref{lst:q3c}}
 	\end{center}
 
 	
@@ -441,7 +443,7 @@ as it automatically resizes the paper to the correct size.
 	function is created.
 	\lstinputlisting{../src/q3/xaxisEvent.m}
 	Then solve the ODE with the added event function.
-	\lstinputlisting{../src/q3/Q3e.m}
+	\lstinputlisting{../src/q3/Q3e_eventDetection.m}
 	This gives that the projectile first passes through the x-axis when 
 	$t=3.038777368718$
 	
@@ -469,7 +471,7 @@ as it automatically resizes the paper to the correct size.
 	\lstinputlisting{../src/q3/landingPosition.m}
 	Then using the bisection method the roots of $x(\theta_{0}) = 0$ can be 
 	found.
-	\lstinputlisting{../src/q3/Q3f_theta_solution.m}
+	\lstinputlisting{../src/q3/Q3f_thetaSolution.m}
 	This gives $\theta_{0} = 21.9185709$ or $\theta_{0} = 51.567361$ as 
 	solutions to the initial angle so that the projectile crosses the x-axis 
 	40m away.
@@ -480,13 +482,13 @@ as it automatically resizes the paper to the correct size.
 	\section{Additional Code for Question 1}
 	\lstinputlisting[label=lst:pltFunc]{../src/q1/pltFunc.m}
 	\section{Additional Code for Question 2}
-	\lstinputlisting[label=lst:q2aii]{../src/q2/Q2aii.m}
-	\lstinputlisting[label=lst:q2bi]{../src/q2/Q2bi.m}
-	\lstinputlisting[label=lst:q2bii]{../src/q2/Q2bii.m}
+	\lstinputlisting[label=lst:q2aii]{../src/q2/Q2aii_errorConvergance.m}
+	\lstinputlisting[label=lst:q2bi]{../src/q2/Q2bi_absoluteError.m}
+	\lstinputlisting[label=lst:q2bii]{../src/q2/Q2bii_absoluteErrorEstimate.m}
 	\section{Additional Code for Question 3}
-	\lstinputlisting[label=lst:q3c]{../src/q3/q3c.m}
-	\lstinputlisting[label=lst:q3d]{../src/q3/q3d.m}
-	\lstinputlisting[label=lst:q3f]{../src/q3/Q3f.m}
+	\lstinputlisting[label=lst:q3c]{../src/q3/Q3c_trajectoryComparison.m}
+	\lstinputlisting[label=lst:q3d]{../src/q3/Q3d_truncationError.m}
+	\lstinputlisting[label=lst:q3f]{../src/q3/Q3f_angleTrajectory.m}
 \end{appendices}
 
 \end{document}
