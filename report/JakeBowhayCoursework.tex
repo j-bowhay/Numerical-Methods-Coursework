@@ -16,6 +16,8 @@
 
 \usepackage[toc,title]{appendix}
 \usepackage{caption}
+\usepackage[backend=bibtex8]{biblatex}
+\addbibresource{ref.bib}
 
 \usepackage{hyperref}
 
@@ -33,7 +35,7 @@ as it automatically resizes the paper to the correct size.
 
 \section{Root-finding}
 \begin{enumerate}
-	\item To find how many solutions each equation has in the given domain I 
+	\item To find how many solutions each equation has in the domain  I 
 	will rearrange all the equations to be equal to zero and then looks for 
 	the roots of the rearranged equations. As a corollary to the intermediate 
 	value theorem, if a function is continuous and changes sign in an 
@@ -55,9 +57,8 @@ as it automatically resizes the paper to the correct size.
 			\includegraphics[scale=0.5]{images/Q1a_i.pdf}
 			\includegraphics[scale=0.5]{images/Q1a_i_zoomed.pdf}
 		}
-			The second zoomed in plot shows there are two solutions in the 
-			given 
-			domain.
+			The second zoomed plot shows there are two solutions in the 
+			given domain.
 			\begin{center}
 				\begin{tabular}{l|lll}
 					$[a,b]$     & f(a)    & f(b)    & Continuous over $[a,b]$ 
@@ -134,7 +135,7 @@ as it automatically resizes the paper to the correct size.
 
 
 
-	\item The bisection method is used by calling the the \verb*|bisectRoot| 
+	\item The bisection method is used by calling the \verb*|bisectRoot| 
 	function.
 	\lstinputlisting[label=lst:bisect]{../src/q1/bisectRoot.m}
 	
@@ -150,8 +151,8 @@ as it automatically resizes the paper to the correct size.
 		\begin{center}
 			\begin{tabular}{l|ll}
 				$[a,b]$     & Root       & \# Iterations \\ \hline
-				$[-1.5,-1]$ & -1.0843597 & 23           \\
-				$[0.5,1]$   & 0.76221107 & 26          
+				$[-1.5,-1]$ & -1.084359675645828 & 23           \\
+				$[0.5,1]$   & 0.762211065739393 & 26          
 			\end{tabular}
 		\end{center}
 		
@@ -163,8 +164,8 @@ as it automatically resizes the paper to the correct size.
 		\begin{center}
 			\begin{tabular}{l|ll}
 				$[a,b]$     & Root        & \# Iterations \\ \hline
-				$[-1,-0.5]$ & -0.92862631 & 26            \\
-				$[0.5,1]$   & 0.92862631  & 26           
+				$[-1,-0.5]$ & -0.928626310080290 & 26            \\
+				$[0.5,1]$   & 0.928626310080290  & 26           
 			\end{tabular}
 		\end{center}
 	
@@ -172,12 +173,14 @@ as it automatically resizes the paper to the correct size.
 		\item Solutions to $f(x) = \cot(x)	- \frac{25}{25x-1} = 0 \  \ 
 		x\in[-2\pi,2\pi]$.
 		\lstinputlisting{../src/q1/Q1b_iii_funcRoots.m}
+		Again note the different tolerances due to the different orders of 
+		magnitude of the roots.
 		\begin{center}
 			\begin{tabular}{l|ll}
 				$[a,b]$     & Root        & \# Iterations \\ \hline
-				$[-5,-4]$   & -4.4953722  & 24            \\
-				$[-1,-0.1]$ & -0.47773376 & 27            \\
-				$[4,5]$     & 4.4914097   & 24           
+				$[-5,-4]$   & -4.495372205972672  & 24            \\
+				$[-1,-0.1]$ & -0.477733755484223 & 27            \\
+				$[4,5]$     & 4.491409689188004   & 24           
 			\end{tabular}
 		\end{center}
 		
@@ -188,24 +191,25 @@ as it automatically resizes the paper to the correct size.
 		\begin{center}
 			\begin{tabular}{l|ll}
 				$[a,b]$        & Root       & \# Iterations \\ \hline
-				$[-2.5,-2]$    & -2.1222382 & 23            \\
-				$[-1.5,-1.25]$ & -1.4255432 & 22            \\
-				$[-1.25,-1]$   & -1.2145933 & 22            \\
-				$[1,1.25]$     & 1.2145933  & 22            \\
-				$[1.25,1.5]$   & 1.4255432  & 22            \\
-				$[2,2.5]$      & 2.1222382  & 23           
+				$[-2.5,-2]$    & -2.122238188982010 & 23            \\
+				$[-1.5,-1.25]$ & -1.425543159246445 & 22            \\
+				$[-1.25,-1]$   & -1.214593321084976 & 22            \\
+				$[1,1.25]$     & 1.214593321084976  & 22            \\
+				$[1.25,1.5]$   & 1.425543159246445  & 22            \\
+				$[2,2.5]$      & 2.122238188982010  & 23           
 			\end{tabular}
 		\end{center}
 	\end{enumerate}
 
 
 	\item The iterative scheme we asked to implement is called Steffensen's 
-	method. This is implemented in the \verb*|steffensenRoot| function.
+	method\cite{wiki:Steffensen's_method}. This is implemented in the 
+	\verb*|steffensenRoot| function.
 	\lstinputlisting[label=lst:steph]{../src/q1/steffensenRoot.m}
 	The following uses this function to find the root of $e^{-x} - x = 0$ and 
 	calculate the convergence.
 	\lstinputlisting{../src/q1/Q1c_errorConvergance.m}
-	After 5 iterations the root $x = 0.567143290410$ is accurate to 12 
+	After 5 iterations the root $x = 0.567143290409784$ is accurate to 12 
 	decimal places.
 	\begin{center}
 		\includegraphics[scale=0.6]{images/Q1c.pdf}
@@ -213,9 +217,8 @@ as it automatically resizes the paper to the correct size.
 	The graph shows a straight which shows error $\propto \Delta_{n-1}^{q}$, 
 	where q is the gradient of the line. Using the \verb*|MATLAB| function 
 	\verb*|polyfit| the gradient of the 
-	above graph as 1.8 which is approximately 2 so Steffensen's method is 
-	second 
-	order.
+	above graph as 1.8. The absolute error is an approximate so this can be 
+	approximated to 2 meaning Steffensen's method is second order.
 	
 	
 	\item The first step in creating a cobweb plot is to implement a fixed 
@@ -265,7 +268,7 @@ as it automatically resizes the paper to the correct size.
 	\item \begin{enumerate}
 		\item The first of the given expression is Simpson's 3/8 rule and the 
 		second given expression is 
-		Milne's rule.
+		Milne's rule\cite{wiki:nc}.
 		
 		Simpson's 3/8 rule can be implemented as follows.
 		\lstinputlisting{../src/q2/simpson38.m}
@@ -330,14 +333,23 @@ as it automatically resizes the paper to the correct size.
 		
 		Whilst both methods are fourth order Simpson's 3/8 rule has a lower 
 		error term so is slightly better as it is more accurate. This is 
-		shown in \autopageref{fg:interr} as the absolute error for Simpson's 
+		shown in \autoref{fg:interr} as the absolute error for Simpson's 
 		3/8 rule is always less.
 	\end{enumerate}
 
 	
 	\item \begin{enumerate}
-		\item To find the order of the rounding and truncation error the 
-		absolute error is plotted against $h$.
+		\item To find the order of the rounding and truncation error when 
+		numerically approximating $f''(x)$ the absolute error is plotted 
+		against $h$. Since $f(x)$ given is differentiable 
+		$f''(x)$ can be found exactly and then the absolute error can be 
+		found by subtracting \autoref{eq:f''} from the numerical 
+		approximation. The exact second derivative is
+		\begin{equation}
+			\frac{d^{2}}{dx^{2}}(\sin^{3}(x)) = -3\sin^{3}(x) + 
+			3\cos(x)\sin(2x).
+			\label{eq:f''}
+		\end{equation}
 		\begin{center}
 			\includegraphics[scale=0.7]{images/Q2bi.pdf}
 			\captionof{figure}{Plot generated by \autoref{lst:q2bi}}
@@ -489,7 +501,8 @@ as it automatically resizes the paper to the correct size.
 	solutions to the initial angle so that the projectile crosses the x-axis 
 	40m away.
 \end{enumerate}
-
+\newpage
+\printbibliography
 \newpage
 \begin{appendices}
 	\section{Additional Code for Question 1}
