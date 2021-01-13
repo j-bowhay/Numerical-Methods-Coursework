@@ -57,14 +57,16 @@ as it automatically resizes the paper to the correct size.
 		}
 			The second zoomed in plot shows there are two solutions in the 
 			given 
-			domain. The first root can be bracketed by the interval 
-			$[-1.5,-1]$ as 
-			$f(-1.5)=4.7455$ and $f(-1)=-0.4687$ so since the function is 
-			continuous and there is a change of sign this bracket must 
-			contain 
-			a root. Like wise the second root can be bracketed by the 
-			interval $[0.5,1]$ 
-			as $f(0.5)=-0.4698$ and $f(1)=0.8012$.
+			domain.
+			\begin{center}
+				\begin{tabular}{l|lll}
+					$[a,b]$     & f(a)    & f(b)    & Continuous over $[a,b]$ 
+					\\ \hline
+					$[-1.5,-1]$ & 4.7455  & -0.4687 & Yes                     
+					\\
+					$[0.5,1]$   & -0.4698 & 0.8012  & Yes                    
+				\end{tabular}
+			\end{center}
 			
 			
 		\item Setting $f(x) = \frac{x^{3}}{\sin(x)} - 1$.
@@ -73,13 +75,15 @@ as it automatically resizes the paper to the correct size.
 			\includegraphics[scale=0.5]{images/Q1a_ii.pdf}
 			\includegraphics[scale=0.5]{images/Q1a_ii_zoomed.pdf}
 		}
-		The second plot show there are two roots. The first root can be 
-		bracketed by the interval $[-1,-0.5]$ as $f(-1) = 0.1884$ 
-		and 
-		$f(-0.5)=-0.7393$ and $f(x)$ is continuous in this bracket. Likewise, 
-		the second root can be bracketed by the interval $[0.5,1]$ as 
-		$f(0.5)=-0.7393$ and 
-		$f(1)=0.1884$.
+		The second plot shows there are two roots. 
+		\begin{center}
+			\begin{tabular}{l|lll}
+				$[a,b]$     & f(a)    & f(b)    & Continuous over $[a,b]$ \\ 
+				\hline
+				$[-1,-0.5]$ & 0.1884  & -0.7393 & Yes                     \\
+				$[0.5,1]$   & -0.7393 & 0.1884  & Yes                    
+				\end{tabular}
+		\end{center}
 		
 		
 		\item Rearranging $\cot(x) = \frac{25}{25x-1}$ gives $f(x) = \cot(x) 
@@ -88,15 +92,16 @@ as it automatically resizes the paper to the correct size.
 		\begin{center}
 			\includegraphics[scale=0.5]{images/Q1a_iii.pdf}
 		\end{center}
-		The plot shows that the equation has three solutions. The first can 
-		be bracketed by the interval $[-5,-4]$ as $f(-5)=0.4942$ and 
-		$f(-4)=-0.6162$. The 
-		second solution can be bracketed by the interval $[-1,-0.1]$ as 
-		$f(-1)=0.3194$ and 
-		$f(-0.1)=-2.8238$. The third solution can be bracketed by the 
-		interval $[4,5]$ as 
-		$f(4)=0.6112$ and $f(5)=-0.4974$. $f(x)$ is continuous in each of the 
-		bracketing intervals.
+		The plot shows that the equation has three solutions. 
+		\begin{center}
+			\begin{tabular}{l|lll}
+				$[a,b]$     & f(a)   & f(b)    & Continuous over $[a,b]$ \\ 
+				\hline
+				$[-5,-4]$   & 0.4942 & -0.6162 & Yes                     \\
+				$[-1,-0.1]$ & 0.3194 & -2.8238 & Yes                     \\
+				$[4,5]$     & 0.6112 & -0.4974 & Yes                    
+			\end{tabular}
+		\end{center}
 	
 	
 		\item Rearranging $4e^{-x^{2}/5} = cos(5x) + 2$ gives $f(x) = 
@@ -109,14 +114,20 @@ as it automatically resizes the paper to the correct size.
 		The second plot shows that the equation has 6 solutions. The 
 		bracketing intervals are shown in the table below.
 		\begin{center}
-			\begin{tabular}{l|ll}
-				$[a,b]$        & f(a)    & f(b)    \\ \hline
-				$[-2.5,-2]$    & -1.8518 & 0.6364  \\
-				$[-1.5,-1.25]$ & 0.2039  & -0.0730 \\
-				$[-1.25,-1]$   & -0.0730 & 0.9913  \\
-				$[1,1.25]$     & 0.9913  & -0.0730 \\
-				$[1.25,1.5]$   & -0.0730 & 0.2039  \\
-				$[2,2.5]$      & 0.6364  & -1.8518
+			\begin{tabular}{l|lll}
+				$[a,b]$        & f(a)    & f(b)    & Continuous over $[a,b]$ 
+				\\ \hline
+				$[-2.5,-2]$    & -1.8518 & 0.6364  & Yes                     
+				\\
+				$[-1.5,-1.25]$ & 0.2039  & -0.0730 & Yes                     
+				\\
+				$[-1.25,-1]$   & -0.0730 & 0.9913  & Yes                     
+				\\
+				$[1,1.25]$     & 0.9913  & -0.0730 & Yes                     
+				\\
+				$[1.25,1.5]$   & -0.0730 & 0.2039  & Yes                     
+				\\
+				$[2,2.5]$      & 0.6364  & -1.8518 & Yes                    
 			\end{tabular}
 		\end{center}
 	\end{enumerate}
@@ -252,14 +263,16 @@ as it automatically resizes the paper to the correct size.
 \section{Numerical integration and differentiation}
 \begin{enumerate}
 	\item \begin{enumerate}
-		\item The first expression is Simpson's 3/8 rule and the second is 
+		\item The first of the given expression is Simpson's 3/8 rule and the 
+		second given expression is 
 		Milne's rule.
 		
 		Simpson's 3/8 rule can be implemented as follows.
 		\lstinputlisting{../src/q2/simpson38.m}
 		And similarly Milne's rule can be implemented.
 		\lstinputlisting{../src/q2/milne.m}
-		However to use the composite version the integral must be broken down 
+		However, to use the composite version the integral must be broken 
+		down 
 		into smaller intervals. For example breaking the integral into $n$ 
 		intervals gives $\int_{a}^{b}f(x)dx = \int_{a}^{x_{1}}f(x)dx + 
 		\int_{x_{1}}^{x_{2}}f(x)dx + \cdots + \int_{x_{n-1}}^{b}f(x)dx$ 
@@ -336,13 +349,13 @@ as it automatically resizes the paper to the correct size.
 		graph shows the truncation error. This has a gradient of 2 which 
 		shows the truncation error is $\mathcal{O}(h^{2})$.
 		
-		\item The error is comprised of the truncation and rounding error. To 
+		\item The error comprises the truncation and rounding error. To 
 		find the truncation error of 
 		\begin{equation}
 			f''(x) \approx \frac{2f(x)-5f(x+h)+4f(x+2h)-f(x+3h)}{h^{2}},
 			\label{eq:f''}
 		\end{equation}
-		consider the following taylor expansions
+		consider the following Taylor expansions
 		\begin{equation}
 			f(x + h) = f(x) + hf'(x) + \frac{h^{2}}{2}f''(x) + 
 			\frac{h^{3}}{6}f^{(3)}(x) + \frac{h^{4}}{24}f^{(4)}(x) + \cdots,
@@ -401,7 +414,7 @@ as it automatically resizes the paper to the correct size.
 		\end{center}
 		The algebraic expression has the same gradient however it is offset. 
 		This is because it assumes that $h$ can be stored exactly and because 
-		it assumes $f(x)\approx f^{(4)}(x)$. However the value of h that 
+		it assumes $f(x)\approx f^{(4)}(x)$. However, the value of h that 
 		minimises error lines up correctly.
 	\end{enumerate}
 \end{enumerate}
@@ -421,8 +434,8 @@ as it automatically resizes the paper to the correct size.
 	\end{enumerate}
 
 
-	\item Solving the ODE using the three different solvers gives the 
-	following trajectories.
+	\item Solving the ODE using the three solvers gives the 
+	following different trajectories.
 	\begin{center}
 		\includegraphics[scale=0.7]{images/Q3c.pdf}
 		\captionof{figure}{Comparision of the three different solutions. Plot 
@@ -430,7 +443,7 @@ as it automatically resizes the paper to the correct size.
 	\end{center}
 
 	
-	\item Error compared to \verb*|ode45|.
+	\item Global truncation error of forward Euler compared to \verb*|ode45|.
 	\begin{center}
 		\includegraphics[scale=0.7]{images/Q3d.pdf}
 		\captionof{figure}{Generated using \autoref{lst:q3d}}

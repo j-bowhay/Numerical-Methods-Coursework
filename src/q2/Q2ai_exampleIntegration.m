@@ -1,4 +1,6 @@
+% intergrand
 f = @(x) exp(x) - x;
+% interval
 a = 0;
 b = 5;
 tol = 5e-7;
