@@ -1,16 +1,23 @@
 f = @(x) sin(x).^3;
+% numerical second derivative 
 d2 = @(f, x, h) (2*f(x) - 5*f(x + h) + 4*f(x + 2*h) - f(x + 3*h))./(h.^2);
+% true second derivative
+d2True = @(x) -3*sin(x)^3 + 3*cos(x)*sin(2*x);
+% true fourth derivative
+d4True = @(x) -24*cos(x)*sin(2*x) + 9*sin(x)^3 - 12*sin(x)*cos(2*x);
 
+% x value to find derivative at
 x = 1;
+
 h = logspace(-8,0,500);
 
 df2 = d2(f, x, h);
-err = abs(df2(2:end) - df2(1:end-1));
-errTheoretical = (11/12)*h.^2*f(x) + (12*f(x)*eps)./(h.^2);
-hstar = nthroot((144*eps)/11, 4);
-estar = (11/12)*hstar.^2*f(x) + (12*f(x)*eps)./(hstar.^2);
+err = abs(df2 - d2True(x));
+errTheoretical = @(h) (11/12)*h.^2*f(x)*2.26 + (12*f(x)*eps)./(h.^2);
+hstar = nthroot((144*eps*f(x))/(11*abs(d4True(x))), 4);
+estar = errTheoretical(hstar);
 
-loglog(h(2:end),err,h, errTheoretical,"LineWidth",2);
+loglog(h,err,h, errTheoretical(h),"LineWidth",2);
 
 hold on
 plot(hstar,estar,"kx","MarkerSize",20, "LineWidth",2);
