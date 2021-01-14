@@ -243,6 +243,9 @@ as it automatically resizes the paper to the correct size.
 	\begin{center}
 		\includegraphics[scale=0.6]{images/Q1d_cobweb.pdf}
 	\end{center}
+	This shows how for this equation fixed point iteration gradually 
+	converges by jumping either 
+	side of the root. This is because $-1<g'(x)<0$ at the root.
 
 	Next I tested producing a staircase diagram, so I set $g(x) = 
 	\sqrt[5]{5x-3}$ with an initial guess of 1.
@@ -250,18 +253,36 @@ as it automatically resizes the paper to the correct size.
 	\begin{center}
 		\includegraphics[scale=0.6]{images/Q1d_staircase.pdf}
 	\end{center}
+	This time fixed point iteration converges nicely to the root in staircase 
+	fashion as $0<g'(x)<1$ at the root.
+
 	Since the function should also be able to handle iterations that don't 
-	converge, I tried $g(x)=\frac{1-xe^{x}}{x}$ with an initial guess of 
-	$\frac{1}{2}$.
-	\lstinputlisting{../src/q1/Q1d_divergance_example.m}
+	converge, I tried $g(x)=x^{2} + 0.1$ with an initial guess of 
+	$1$.
+	\lstinputlisting{../src/q1/Q1d_divergance_staircase_example.m}
 	\begin{center}
 		\includegraphics[scale=0.6]{images/Q1d_divergance.pdf}
 	\end{center}
-	This cobweb diagram shows how the gradient at the root is too steep which 
-	means the iteration fails to converge. This is also shown by that fact 
-	that the approximate absolute error at the final step is still $\sim4.6$. 
-	I also tested it with a number of other function both converge and 
-	diverge however these have been omited from the report to save space.
+	This time the solution diverges away from the root in a staircase fashion 
+	as $g'(x)>0$ at the root.
+	
+	The function should also handle divergence in a cobweb fashion, so I 
+	tried $g(x) = 3.5x(1-x)$ with an intial guess of 0.65.
+	\lstinputlisting{../src/q1/Q1d_divergance_cobweb_example.m}
+	\begin{center}
+		\includegraphics[scale=0.6]{images/Q1d_divcob.pdf}
+	\end{center}
+	Here the iteration diverges away from the root in a cobweb fashion as 
+	$g'(x)<-1$ at the root.
+	
+	The iteration can also orbit the root. For example when $g(x)=3x(1-x)$ 
+	with an initial guess of 0.65.
+	\lstinputlisting{../src/q1/Q1d_divergance_orbit_example.m}
+	\begin{center}
+		\includegraphics[scale=0.6]{images/Q1d_orbit.pdf}
+	\end{center}
+	This is an example of a period 2 orbit.
+	
 \end{enumerate}
 
 \section{Numerical integration and differentiation}
@@ -274,7 +295,7 @@ as it automatically resizes the paper to the correct size.
 		down into smaller intervals. For example breaking the integral into 
 		$n$ 
 		intervals gives $\int_{a}^{b}f(x)dx = \int_{a}^{b_{1}}f(x)dx + 
-		\int_{a_{1}}^{b_{2}}f(x)dx + \cdots + \int_{a_{n-1}}^{b}f(x)dx$. Then 
+		\int_{a_{1}}^{b_{2}}f(x)dx + \cdots + \int_{a_{n}}^{b}f(x)dx$. Then 
 		each of these smaller 
 		integrals can be calculated using either of the methods.
 		

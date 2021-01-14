@@ -1,1 +1,0 @@
-cobwebDiagram(@(x) (1 - x.*exp(x))./x, 0.5, 10, -5, 5)

@@ -21,15 +21,20 @@ function [compQuad, h, err] = compositeQuad(f, mode, a, b, tol)
     %   to 3 decimal places
     
     if mode == 1
+        % Simpson's 3/8 rule
+        % number of subintervals must be a multiple of 3
         N = 3;
         q = @(x, h) (3*h)/8*(f(x(1)) + 3*sum(f(x(2:3:end-2))...
             + f(x(3:3:end-1))) + 2*sum(f(x(4:3:end-3))) + f(x(end)));
-    elseif mode ==2
+    elseif mode == 2
+        % Milne's rule
+        % number of subintervals must be a multiple of 4
         N = 4;
         q = @(x, h) (4*h)/3*(2*sum(f(x(2:2:end-1))) - sum(f(x(3:4:end-2))));
     else
        error("Invalid mode") 
     end
+    
     % max number of iterations to prevent infinite loop
     nMax = 50;
     % iteration counter
@@ -44,8 +49,11 @@ function [compQuad, h, err] = compositeQuad(f, mode, a, b, tol)
         % generate step size
         h(n) = (b - a)/N;
         
+        % generate equally spaced node
         x = linspace(a, b, N + 1);
+        % calculate quadrature
         compQuad(n) = q(x, h(n));
+        
         try
             err(n) = abs(compQuad(n) - compQuad(n - 1));
         catch
@@ -56,6 +64,7 @@ function [compQuad, h, err] = compositeQuad(f, mode, a, b, tol)
         n = n + 1;
         N = N * 2;
     end
+    
     % removed any used preallocation
     err(isinf(err)) = [];
     compQuad(isnan(compQuad)) = [];
