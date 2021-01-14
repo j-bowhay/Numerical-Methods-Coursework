@@ -18,6 +18,7 @@
 \usepackage{caption}
 \usepackage[backend=bibtex8]{biblatex}
 \addbibresource{ref.bib}
+\usepackage{breqn}
 
 \usepackage{hyperref}
 
@@ -268,23 +269,91 @@ as it automatically resizes the paper to the correct size.
 	\item \begin{enumerate}
 		\item The first of the given expression is Simpson's 3/8 rule and the 
 		second given expression is 
-		Milne's rule\cite{wiki:nc}.
+		Milne's rule\cite{wiki:nc}. However, to use the composite version the 
+		integral must be broken 
+		down into smaller intervals. For example breaking the integral into 
+		$n$ 
+		intervals gives $\int_{a}^{b}f(x)dx = \int_{a}^{b_{1}}f(x)dx + 
+		\int_{a_{1}}^{b_{2}}f(x)dx + \cdots + \int_{a_{n-1}}^{b}f(x)dx$. Then 
+		each of these smaller 
+		integrals can be calculated using either of the methods.
 		
-		Simpson's 3/8 rule can be implemented as follows.
-		\lstinputlisting{../src/q2/simpson38.m}
-		And similarly Milne's rule can be implemented.
-		\lstinputlisting{../src/q2/milne.m}
-		However, to use the composite version the integral must be broken 
-		down 
-		into smaller intervals. For example breaking the integral into $n$ 
-		intervals gives $\int_{a}^{b}f(x)dx = \int_{a}^{x_{1}}f(x)dx + 
-		\int_{x_{1}}^{x_{2}}f(x)dx + \cdots + \int_{x_{n-1}}^{b}f(x)dx$ 
-		where 
-		$x_{i} = a + i \cdot \frac{b - a}{n}$. Then each of these smaller 
-		integrals can be calculated using either of the methods. The 
-		\verb*|compositeQuad| function breaks down the integral into smaller 
-		intervals before using a Newton-Coutes method of choice to 
-		approximate the integral.
+		\textbf{Deriving Composite Simpson's 3/8 rule}
+		
+		The given formula
+		\begin{equation}
+			\int_{a}^{b}f(x)dx \approx 
+			\frac{b-a}{8}\left[f(a)+f(\frac{2a+b}{3})+ 
+			f(\frac{a+2b}{3})+f(b)\right],
+			\label{eq:simp38}
+		\end{equation}
+		divides the interval $[a,b]$ into 3 subintervals by creating 4 nodes. 
+		The width of the subinterval is $h = \frac{b-a}{3}$ and the position 
+		of the node is given by $x_{i}= a + (i-1)h$ for $i=1,2,\dots,4$. 
+		This means $a=x_{1}$ and likewise $b=x_{4}$. So \autoref{eq:simp38} 
+		can be rewritten as 
+		\begin{equation}
+			\int_{a}^{b}f(x)dx \approx \frac{3h}{8}\left[f(x_{1}) + 3f(x_{2}) 
+			+ 3f(x_{3}) + f(x_{4})\right].
+		\end{equation}
+		So to use the composite version the interval $[a,b]$ should be 
+		divided into $N$ subintervals where $N\mod3\equiv0$. This will result 
+		in subintervals of width $h = \frac{b-a}{N}$ and $N+1$ nodes 
+		positioned at $x_{i}= a + (i-1)h$ for $i=1,2,\dots,N+1$. So $a=x_{1}$ 
+		and $b=x_{N+1}$. Doing this gives
+		\begin{dmath}
+			\int_{a}^{b}f(x)dx \approx \frac{3h}{8}\left[f(x_{1}) + 3f(x_{2}) 
+			+ 3f(x_{3}) + 2f(x_{4}) + 3f(x_{5})+3f(x_{6}) + 2f(x_{7}) + \dots 
+			+ 
+			2f(x_{N-2}) + 3f(x_{N-1}) + 3f(x_{N}) + f(x_{N+1}) \right].
+			\label{eq:simpsum}
+		\end{dmath}
+		So rewriting as a summation gives
+		\begin{equation}
+			\int_{a}^{b}f(x)dx \approx \frac{3h}{8}\left[f(x_{1}) + 
+			3\sum_{i=1}^{N/3}(f(x_{3i-1}) + f(x_{3i})) + 
+			2\sum_{i=1}^{(N/3)-1}(f(x_{3i+1})) + 
+			f(x_{N+1})])\right].
+			\label{eq:simpfinal}
+		\end{equation}
+		
+		\textbf{Deriving Composite Milne's rule}
+		
+		Similarly, the second given formula
+		\begin{equation}
+			\int_{a}^{b}f(x)dx \approx 
+			\frac{b-a}{3}\left[2f(\frac{3a+b}{4}) - f(\frac{a+b}{2})+ 
+			2f(\frac{a+3b}{4})\right],
+			\label{eq:milne}
+		\end{equation}
+		divides the interval $[a,b]$ into 4 subintervals by creating 5 nodes. 
+		The width of the subinterval is $h = \frac{b-a}{4}$ and the position 
+		of the node is given by $x_{i}= a + (i-1)h$ for $i=1,2,\dots,5$. So 
+		$a=x_{1}$ and $b=x_{5}$. So \autoref{eq:milne} can be rewritten as
+		\begin{equation}
+			\int_{a}^{b}f(x)dx \approx \frac{4h}{3}\left[2f(x_{2}) - 
+			f(x_{3}) + 2f(x_{4})\right].
+		\end{equation}
+		So to use the composite version the interval $[a,b]$ should be 
+		divided into $N$ subintervals where $N\mod4\equiv0$. This will result 
+		in subintervals of width $h = \frac{b-a}{N}$ and $N+1$ nodes 
+		positioned at $x_{i}= a + (i-1)h$ for $i=1,2,\dots,N+1$. So $a=x_{1}$ 
+		and $b=x_{N+1}$. Doing this gives
+		\begin{dmath}
+			\int_{a}^{b}f(x)dx \approx \frac{4h}{3}\left[2f(x_{2}) - f(x_{3}) 
+			+ 2f(x_{4}) + 2f(x_{6}) - f(x_{7}) + 2f(x_{8}) + \dots + 
+			2(f(x_{N-1})) - f(x_{N-1}) + 2f(x_{n})\right].
+		\end{dmath}
+		This can be written as a summation
+		\begin{equation}
+			\int_{a}^{b}f(x)dx \approx \frac{4h}{3} 
+			\left[2\sum_{i=1}^{N/2}(f(x_{2i})) - 
+			\sum_{i=1}^{N/4}(f(x_{4i-1}))\right]
+			\label{eq:milnefinal}
+		\end{equation}
+		So \autoref{eq:simpfinal} and \autoref{eq:milnefinal} can be 
+		implemented in \verb*|MATLAB| to give the composite version of the 
+		fomula provided.
 		\lstinputlisting{../src/q2/compositeQuad.m}
 		For an example both methods can be used to evaluate $\int_{0}^{5} 
 		e^{x} - x dx$ to 6 decimal places as follows.
@@ -480,7 +549,7 @@ as it automatically resizes the paper to the correct size.
 	Then solve the ODE with the added event function.
 	\lstinputlisting{../src/q3/Q3e_eventDetection.m}
 	This gives that the projectile first passes through the x-axis when 
-	$t=3.038777368718$
+	$t=3.0387773687184$ and $x=43.990576824668466$m.
 	
 	
 	\item An equivalent formulation to this problem is to consider the angles 

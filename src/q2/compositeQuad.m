@@ -1,11 +1,10 @@
-function [compQuad, h, err] = compositeQuad(f, i, a, b, tol)
+function [compQuad, h, err] = compositeQuad(f, mode, a, b, tol)
     %compositeQuad amproximate quadrature using a Newton-Coutes method
     %
     %Inputs:
     %   f = function handle of the integrand
-    %   i = function handle of the Newton-Coutes method to use. Must be in
-    %   the format i(f, a, b) where f is the integrand and [a,b] is the
-    %   interval to integrate over
+    %   mode = the newton-coutes method to use: 1 - Simpson's 3/8, 2 -
+    %   Milne's rule
     %   a = lower bound of the interval
     %   b = upper bound of the interval
     %   tol = desired absolute error tolerance
@@ -17,17 +16,24 @@ function [compQuad, h, err] = compositeQuad(f, i, a, b, tol)
     %   err = vector of the absolute error at each approximation
     %
     %Usage:
-    %   compositeQuad(@(x) exp(x), @(f, a, b) (b - a)/2 .*(f(a) + f(b)),...
-    %   0, 1, 5e-4) -> Estimates the quadrature of e^x in the interval
-    %   [0,1] using the trapezium rule to 3 decimal places
+    %   compositeQuad(@(x) exp(x), 1, 1, 5e-4) -> Estimates the quadrature
+    %   of e^x in the interval [0,1] using the Simpson's 3/8 rule
+    %   to 3 decimal places
     
-    
+    if mode == 1
+        N = 3;
+        q = @(x, h) (3*h)/8*(f(x(1)) + 3*sum(f(x(2:3:end-2))...
+            + f(x(3:3:end-1))) + 2*sum(f(x(4:3:end-3))) + f(x(end)));
+    elseif mode ==2
+        N = 4;
+        q = @(x, h) (4*h)/3*(2*sum(f(x(2:2:end-1))) - sum(f(x(3:4:end-2))));
+    else
+       error("Invalid mode") 
+    end
     % max number of iterations to prevent infinite loop
-    nMax = 25;
+    nMax = 50;
     % iteration counter
     n = 1;
-    % number of subintervals
-    N = 2;
     % preallocate vectors for the error, quadrature and step size
     err = inf(1, nMax);
     compQuad = NaN(1, nMax);
@@ -37,13 +43,9 @@ function [compQuad, h, err] = compositeQuad(f, i, a, b, tol)
     while all(err > tol) && n < nMax
         % generate step size
         h(n) = (b - a)/N;
-        % calculate lower bounds
-        lowerBounds = a + h(n).*[0:N-1];
-        % calculate upper bounds
-        upperBounds = a + h(n).*[1:N];
-        % calculate quadrature using given Newton-coutes method
-        compQuad(n) = sum(i(f, lowerBounds, upperBounds));
-        % calculate absolute error
+        
+        x = linspace(a, b, N + 1);
+        compQuad(n) = q(x, h(n));
         try
             err(n) = abs(compQuad(n) - compQuad(n - 1));
         catch

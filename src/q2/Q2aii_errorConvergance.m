@@ -5,9 +5,9 @@ a = 3;
 b = 4;
 tol = 5e-9;
 % integrate using Simpson's 3/8 rule
-[q, hSimp38, errSimp38] = compositeQuad(f, @simpson38, a, b, tol);
+[q, hSimp38, errSimp38] = compositeQuad(f, 1, a, b, tol);
 % integrate using Milne's rule
-[q, hMilne, errMilne] = compositeQuad(f, @milne, a, b, tol);
+[q, hMilne, errMilne] = compositeQuad(f, 2, a, b, tol);
 
 % plot error
 loglog(hSimp38(2:end), errSimp38,"x-",...
