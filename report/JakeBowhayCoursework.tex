@@ -24,7 +24,8 @@
 
 \begin{document}
 
-\solutionsheader{COURSEWORK ASSESSMENT}{Jake Bowhay (UP19056)}
+\solutionsheader{COURSEWORK ASSESSMENT}{Jake Bowhay 
+(1936473)\\\href{mailto:up19056@bristol.ac.uk}{up19056@bristol.ac.uk}}
 
 \tableofcontents
 
@@ -33,7 +34,6 @@
 All figures in this report have been saved using \verb*|saveFigPDF| function 
 as it automatically resizes the paper to the correct size.
 \lstinputlisting{../src/saveFigPDF.m}
-
 \section{Root-finding}
 \begin{enumerate}
 	\item To find how many solutions each equation has in the domain  I 
@@ -207,19 +207,26 @@ as it automatically resizes the paper to the correct size.
 	method\cite{wiki:Steffensen's_method}. This is implemented in the 
 	\verb*|steffensenRoot| function.
 	\lstinputlisting[label=lst:steph]{../src/q1/steffensenRoot.m}
-	The following uses this function to find the root of $e^{-x} - x = 0$ and 
-	calculate the convergence.
+	The following uses this function to find the root of $e^{-x} - x = 0$ 
+	with an initial guess of 0 and 
+	graphs the convergence.
 	\lstinputlisting{../src/q1/Q1c_errorConvergance.m}
 	After 5 iterations the root $x = 0.567143290409784$ is accurate to 12 
 	decimal places.
 	\begin{center}
 		\includegraphics[scale=0.6]{images/Q1c.pdf}
 	\end{center}
-	The graph shows a straight which shows error $\propto \Delta_{n-1}^{q}$, 
-	where q is the gradient of the line. Using the \verb*|MATLAB| function 
-	\verb*|polyfit| the gradient of the 
-	above graph as 1.8. The absolute error is an approximate so this can be 
-	approximated to 2 meaning Steffensen's method is second order.
+	The graph shows a straight line which shows error $\propto 
+	\Delta_{n-1}^{q}$, 
+	where q is the gradient of the line. However, there is a slight change in 
+	the gradient when $\Delta_{n}$ is less than $10^{-8}$. This is because 
+	the absolute error is being approximated by $x_{n+1}-x_{n}$. As the 
+	iterative scheme converges on the root this approximation can become 
+	problematic as it involves subtracting two very similar numbers which can 
+	result in rounding error. For this reason I will ignore the final point 
+	where $\Delta_{n}\sim10^{-16}$. Using \verb*|polyfit| to find the 
+	gradient of the straight region gives a gradient of 2 which means 
+	Steffensen's method is second order.
 	
 	
 	\item The first step in creating a cobweb plot is to implement a fixed 
@@ -232,7 +239,7 @@ as it automatically resizes the paper to the correct size.
 	the initial guess $x_{0}$, the number of iterations and the interval to 
 	display on the x-axis (which should contain the root). The reason to user 
 	has to enter the range to display on the x-axis is because in the case of 
-	divergence the estimate of the root can shoot off to very large value 
+	divergence the estimate of the root may shoot off to very large value 
 	which when plotted make previous iteration so small that the plot doesn't 
 	show anything meaningful.
 	
@@ -264,10 +271,10 @@ as it automatically resizes the paper to the correct size.
 		\includegraphics[scale=0.6]{images/Q1d_divergance.pdf}
 	\end{center}
 	This time the solution diverges away from the root in a staircase fashion 
-	as $g'(x)>0$ at the root.
+	as $g'(x)>1$ at the root.
 	
 	The function should also handle divergence in a cobweb fashion, so I 
-	tried $g(x) = 3.5x(1-x)$ with an intial guess of 0.65.
+	tried $g(x) = 3.5x(1-x)$ with an initial guess of 0.65.
 	\lstinputlisting{../src/q1/Q1d_divergance_cobweb_example.m}
 	\begin{center}
 		\includegraphics[scale=0.6]{images/Q1d_divcob.pdf}
@@ -374,7 +381,7 @@ as it automatically resizes the paper to the correct size.
 		\end{equation}
 		So \autoref{eq:simpfinal} and \autoref{eq:milnefinal} can be 
 		implemented in \verb*|MATLAB| to give the composite version of the 
-		fomula provided.
+		formula provided.
 		\lstinputlisting{../src/q2/compositeQuad.m}
 		For an example both methods can be used to evaluate $\int_{0}^{5} 
 		e^{x} - x dx$ to 6 decimal places as follows.
@@ -386,7 +393,7 @@ as it automatically resizes the paper to the correct size.
 		$h$ (the size of subintervals).
 		\begin{center}
 			\includegraphics[scale=0.7]{images/Q2aii.pdf}
-			\captionof{figure}{Error convergance of composite Simpson's 3/8 
+			\captionof{figure}{Error convergence of composite Simpson's 3/8 
 			rule and composite
 			Milne's rule. 
 			Generated using 
@@ -395,18 +402,19 @@ as it automatically resizes the paper to the correct size.
 		\end{center}
 		\autoref{fg:interr} shows both method produce a straight line which 
 		shows error $\propto h^{q}$ where q is the gradient. The 
-		\verb*|polyfits| function shows both line have a gradient of 4 which 
+		\verb*|polyfit| function shows both line have a gradient of 4 which 
 		means both composite Simpson's 3/8 rule and composite Milne's rule 
 		are 4th order.
 		
-		The accuracy is the highest order polynomial that the method can 
-		integrate exactly. So to find the degree of accuracy of each method 
-		test it on a variety of polynomials of increasing order and see if it 
+		The accuracy is of the method is the highest order polynomial that 
+		the method can 
+		integrate exactly. So to find the degree of accuracy each method is
+		tested on a variety of polynomials of increasing order and see if it 
 		can integrate the polynomial exactly.
 		
 		\begin{center}
 			\begin{tabular}{l|lll}
-				& Exact Value    & Simpon's 3/8 Rule & Milne's Rule      \\ 
+				& Exact Value    & Simpson's 3/8 Rule & Milne's Rule      \\ 
 				\hline
 				$\int_{0}^{1}x \ dx$     & $\frac{1}{2}$ & 0.5               
 				& 0.5               \\
@@ -417,6 +425,7 @@ as it automatically resizes the paper to the correct size.
 				$\int_{0}^{1}x^{4} \ dx$ & $\frac{1}{5}$ & 0.203703703703704 
 				& 0.192708333333333
 			\end{tabular}
+			\captionof{table}{Results produced using \autoref{lst:q2aiia}}
 		\end{center}
 		This shows that both methods are of degree of accuracy 3 as they can 
 		both exact integrate cubics but not quartics.
@@ -424,7 +433,7 @@ as it automatically resizes the paper to the correct size.
 		Whilst both methods are fourth order Simpson's 3/8 rule has a lower 
 		error term so is slightly better as it is more accurate. This is 
 		shown in \autoref{fg:interr} as the absolute error for Simpson's 
-		3/8 rule is always less.
+		3/8 rule is less.
 	\end{enumerate}
 
 	
@@ -433,12 +442,12 @@ as it automatically resizes the paper to the correct size.
 		numerically approximating $f''(x)$ the absolute error is plotted 
 		against $h$. Since $f(x)$ given is differentiable 
 		$f''(x)$ can be found exactly and then the absolute error can be 
-		found by subtracting \autoref{eq:f''} from the numerical 
+		found by subtracting \autoref{eq:f''t} from the numerical 
 		approximation. The exact second derivative is
 		\begin{equation}
 			\frac{d^{2}}{dx^{2}}(\sin^{3}(x)) = -3\sin^{3}(x) + 
 			3\cos(x)\sin(2x).
-			\label{eq:f''}
+			\label{eq:f''t}
 		\end{equation}
 		\begin{center}
 			\includegraphics[scale=0.7]{images/Q2bi.pdf}
@@ -449,9 +458,8 @@ as it automatically resizes the paper to the correct size.
 		rounding and truncation error. The rounding error is shown by the 
 		jagged first half which has a gradient of -2 which shows the order of 
 		the rounding error is $\mathcal{O}(h^{-2})$. The second half of the 
-		graph shows the truncation error. This has a gradient of 2 which 
-		shows the truncation error is $\mathcal{O}(h^{2})$.
-		
+		graph shows the truncation error. The order of the truncation error 
+		is $\mathcal{O}(h^{2})$.
 		\item The error comprises the truncation and rounding error. To 
 		find the truncation error of 
 		\begin{equation}
@@ -550,7 +558,7 @@ as it automatically resizes the paper to the correct size.
 	following different trajectories.
 	\begin{center}
 		\includegraphics[scale=0.7]{images/Q3c.pdf}
-		\captionof{figure}{Comparision of the three different solutions. Plot 
+		\captionof{figure}{Comparison of the three different solutions. Plot 
 		produced using \autoref{lst:q3c}}
 	\end{center}
 
@@ -561,7 +569,8 @@ as it automatically resizes the paper to the correct size.
 		\captionof{figure}{Generated using \autoref{lst:q3d}}
 	\end{center}
 	The order of global truncation error can be given by the gradient in the 
-	limit as $h \xrightarrow{} 0$. In this case the gradient is 1 so the 
+	limit as $h \xrightarrow{} 0$. Using \verb*|polyfit| gives the gradient 
+	is 1 so the 
 	global truncation error is $\order(h)$.
 	
 	\item To find when the projectile crosses the x-axis first an event 
@@ -570,7 +579,7 @@ as it automatically resizes the paper to the correct size.
 	Then solve the ODE with the added event function.
 	\lstinputlisting{../src/q3/Q3e_eventDetection.m}
 	This gives that the projectile first passes through the x-axis when 
-	$t=3.0387773687184$ and $x=43.990576824668466$m.
+	$t=3.038552614325920$ and $x=43.985726434530370$m.
 	
 	
 	\item An equivalent formulation to this problem is to consider the angles 
@@ -597,18 +606,23 @@ as it automatically resizes the paper to the correct size.
 	Then using the bisection method the roots of $x(\theta_{0}) = 0$ can be 
 	found.
 	\lstinputlisting{../src/q3/Q3f_thetaSolution.m}
-	This gives $\theta_{0} = 21.9185709$ or $\theta_{0} = 51.567361$ as 
+	This gives $\theta_{0} = 21.923574858769541$ or $\theta_{0} = 
+	51.558156070684333$ as 
 	solutions to the initial angle so that the projectile crosses the x-axis 
 	40m away.
 \end{enumerate}
 \newpage
-\printbibliography
+\printbibliography[
+heading=bibintoc,
+title={Bibliography}
+]
 \newpage
 \begin{appendices}
 	\section{Additional Code for Question 1}
 	\lstinputlisting[label=lst:pltFunc]{../src/q1/pltFunc.m}
 	\section{Additional Code for Question 2}
 	\lstinputlisting[label=lst:q2aii]{../src/q2/Q2aii_errorConvergance.m}
+	\lstinputlisting[label=lst:q2aiia]{../src/q2/Q2aii_degreeOfAccuracy.m}
 	\lstinputlisting[label=lst:q2bi]{../src/q2/Q2bi_absoluteError.m}
 	\lstinputlisting[label=lst:q2bii]{../src/q2/Q2bii_absoluteErrorEstimate.m}
 	\section{Additional Code for Question 3}

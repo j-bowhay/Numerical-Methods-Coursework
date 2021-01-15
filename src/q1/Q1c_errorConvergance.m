@@ -8,4 +8,4 @@ ylabel('\Delta_{n}');
 xlim([e(end - 1) e(1)]);
 grid on;
 %% Find order of congerence
-polyfit(log(e(1:end-1)), log(e(2:end)), 1)
+polyfit(log(e(1:end-2)), log(e(2:end-1)), 1)

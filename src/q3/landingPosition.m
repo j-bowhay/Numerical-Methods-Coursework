@@ -8,7 +8,8 @@ function x = landingPosition(theta)
     
     %% solve ODE for a range of theta
     %set event detection
-    options = odeset("Events", @xaxisEvent);
+    options = odeset("Events", @xaxisEvent, "RelTol", 1e-13,...
+        "AbsTol", 1e-13, "Refine", 10);
     % calculate initial conditions for a given theta
     y0 = [-40 0 v0*cos(theta0) v0*sin(theta0)]';
     % solve ODE
